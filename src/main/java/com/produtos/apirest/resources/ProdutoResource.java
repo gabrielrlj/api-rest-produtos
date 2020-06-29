@@ -1,4 +1,4 @@
-package com.produtos.apirest.resources;
+ package com.produtos.apirest.resources;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,10 +54,16 @@ public class ProdutoResource {
 		produtoRepository.delete(produto);
 	}
 	
+	@DeleteMapping("/deletarProduto/{id}")
+	public void deletaProdutoId(@PathVariable(value="id") Long id) {
+		produtoRepository.deleteById(id);
+	}
 	
 	@PutMapping("/produto")
 	@ApiOperation(value = "Atualiza um produto")
 	public Produto atualizaProduto(@RequestBody Produto produto) {
 		return produtoRepository.save(produto);
 	}
+	
+	
 }
